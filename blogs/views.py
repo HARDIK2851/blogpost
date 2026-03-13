@@ -5,3 +5,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def home(request):
     return render(request,'blogs/home.html')
+
+@login_required
+def createpost(request):
+    return render(request,'blogs/createpost.html')
