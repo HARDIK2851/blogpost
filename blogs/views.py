@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm, CommentForm
-from .models import Post
+from .models import Post, Comment
 
 # Create your views here.
 @login_required
@@ -49,3 +49,16 @@ def postdetail(request, post_id):
         form = CommentForm()
 
     return render(request,'blogs/postdetail.html', {'post': post,'form': form,'comments': comments})
+
+@login_required
+def deletecomment(request, comment_id):
+
+    comment = get_object_or_404(Comment, id=comment_id)
+
+    if request.user != comment.author and request.user != comment.post.author:
+        return redirect('blogs:home')
+
+    post_id = comment.post.id
+    comment.delete()
+
+    return redirect('blogs:postdetail', post_id=post_id)

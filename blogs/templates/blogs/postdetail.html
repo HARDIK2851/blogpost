@@ -8,30 +8,38 @@
 </head>
 
 <body>
-<form method="POST" action="{% url 'users:logout' %}">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
-    <h1>{{ post.title }}</h1>
-
-    <p>{{ post.maincontent }}</p>
-
-    <p>Author: {{ post.author }}</p>
-    <p>Created: {{ post.datecreated }}</p>
-
-    <h2>Add Comment</h2>
-
-    <form method="POST">
+    <form method="POST" action="{% url 'users:logout' %}">
         {% csrf_token %}
-
-        {{ form.content }}
-
-        <button type="submit">Add Comment</button>
+        <button type="submit">Logout</button>
     </form>
+    <div>
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.maincontent }}</p>
+        <p>Author: {{ post.author }}</p>
+        <p>Created: {{ post.datecreated }}</p>
+    </div>
+
+    <div>
+        <h2>Add Comment</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.content }}
+            <button type="submit">Add Comment</button>
+        </form>
+    </div>
 
     <h2>Comments</h2> {% for comment in comments %} <div class="comment">
         <p> <strong>{{ comment.author }}</strong> <span>{{ comment.datetime }}</span> </p>
         <p>{{ comment.content }}</p>
+
+        {% if user == post.author or user == comment.author %}
+
+        <form method="POST" action="{% url 'blogs:deletecomment' comment.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+
+        {% endif %}
     </div> {% empty %} <p>No comments yet.</p> {% endfor %}
 </body>
 

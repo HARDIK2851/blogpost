@@ -8,19 +8,34 @@
 </head>
 
 <body>
-<form method="POST" action="{% url 'users:logout' %}">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>    <h1>Blog List</h1>
+
+    <div>
+        {% if user.is_authenticated %}
+
+        <h2>User Information</h2>
+
+        <p>Username: {{ user.username }}</p>
+        <p>First Name: {{ user.first_name }}</p>
+        <p>Last Name: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <form method="POST" action="{% url 'users:logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+        {% endif %}
+    </div>
+
+    <h1>Blog List</h1>
     <button><a href="{%url 'blogs:createpost'%}">Create Post</a></button>
 
-    <h1>All posts</h1>
-    {% for post in posts %}
-
-    <h2><a href="{%url 'blogs:postdetail' post.id%}">{{ post.title }}</a></h2>
-    <!-- <p>{{ post.maincontent }}</p> -->
-    <p>Author: {{ post.author }}</p>
-    <p>Created: {{ post.datecreated }}</p>
+    <div>
+        <h1>All posts</h1>
+        {% for post in posts %}
+        <h2><a href="{%url 'blogs:postdetail' post.id%}">{{ post.title }}</a></h2>
+        <!-- <p>{{ post.maincontent }}</p> -->
+        <p>Author: {{ post.author }}</p>
+        <p>Created: {{ post.datecreated }}</p>
+    </div>
 
     <hr>
 
