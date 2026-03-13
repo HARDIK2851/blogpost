@@ -8,6 +8,10 @@
 </head>
 
 <body>
+<form method="POST" action="{% url 'users:logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
     <h1>{{ post.title }}</h1>
 
     <p>{{ post.maincontent }}</p>

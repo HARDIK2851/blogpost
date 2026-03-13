@@ -8,7 +8,10 @@
 </head>
 
 <body>
-    <h1>Blog List</h1>
+<form method="POST" action="{% url 'users:logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>    <h1>Blog List</h1>
     <button><a href="{%url 'blogs:createpost'%}">Create Post</a></button>
 
     <h1>All posts</h1>
