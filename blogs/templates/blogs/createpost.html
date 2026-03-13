@@ -7,5 +7,16 @@
 </head>
 <body>
     <h1>Create your post here</h1>
+    <form method="POST">
+    {% csrf_token %}
+
+    <label>Title</label><br>
+    {{ form.title }}<br><br>
+
+    <label>Content</label><br>
+    {{ form.maincontent }}<br><br>
+
+    <button type="submit">Create Post</button>
+</form>
 </body>
 </html>

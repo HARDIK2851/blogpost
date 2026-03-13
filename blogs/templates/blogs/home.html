@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogs</title>
 </head>
+
 <body>
     <h1>Blog List</h1>
     <button><a href="{%url 'blogs:createpost'%}">Create Post</a></button>
+
+    <h1>All posts</h1>
+    {% for post in posts %}
+
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.maincontent }}</p>
+    <p>Author: {{ post.author }}</p>
+    <p>Created: {{ post.datecreated }}</p>
+
+    <hr>
+
+    {% endfor %}
 </body>
+
 </html>
