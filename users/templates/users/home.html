@@ -8,8 +8,8 @@
 <body>
     <h1>Hello welcome to blogpost</h1>
     <p>login to read and post blogs</p>
-    <button><a href="login">Login</a></button>
-    <p>don't have an account. no worries, <a href="signup">click here</a></button> to create one</p>
+    <button><a href="{% url 'users:login' %}">Login</a></button>
+    <p>don't have an account. no worries, <a href="{% url 'users:signup' %}">click here</a></button> to create one</p>
     
 </body>
 </html>
