@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post detail</title>
+</head>
+
+<body>
+    <h1>{{ post.title }}</h1>
+
+    <p>{{ post.maincontent }}</p>
+
+    <p>Author: {{ post.author }}</p>
+    <p>Created: {{ post.datecreated }}</p>
+
+    <h2>Add Comment</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.content }}
+
+        <button type="submit">Add Comment</button>
+    </form>
+
+    <h2>Comments</h2> {% for comment in comments %} <div class="comment">
+        <p> <strong>{{ comment.author }}</strong> <span>{{ comment.datetime }}</span> </p>
+        <p>{{ comment.content }}</p>
+    </div> {% empty %} <p>No comments yet.</p> {% endfor %}
+</body>
+
+</html>

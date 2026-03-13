@@ -14,8 +14,8 @@
     <h1>All posts</h1>
     {% for post in posts %}
 
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.maincontent }}</p>
+    <h2><a href="{%url 'blogs:postdetail' post.id%}">{{ post.title }}</a></h2>
+    <!-- <p>{{ post.maincontent }}</p> -->
     <p>Author: {{ post.author }}</p>
     <p>Created: {{ post.datecreated }}</p>
 
