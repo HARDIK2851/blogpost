@@ -1,15 +1,46 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blogpost</title>
+    <title>BlogPost</title>
+
+    <link rel="stylesheet" href="{% static 'css/users.css' %}">
+    <script src="{% static 'js/users.js' %}" defer></script>
+
 </head>
+
 <body>
-    <h1>Hello welcome to blogpost</h1>
-    <p>login to read and post blogs</p>
-    <button><a href="{% url 'users:login' %}">Login</a></button>
-    <p>don't have an account. no worries, <a href="{% url 'users:signup' %}">click here</a></button> to create one</p>
-    
+
+<div class="container">
+
+    <div class="card">
+
+        <h1 class="title">Welcome to BlogPost</h1>
+
+        <p class="subtitle">
+            Login to read and share blogs with the community.
+        </p>
+
+        <div class="actions">
+
+            <a class="btn primary" href="{% url 'users:login' %}">
+                Login
+            </a>
+
+        </div>
+
+        <p class="signup-text">
+            Don't have an account?
+            <a class="signup-link" href="{% url 'users:signup' %}">
+                Create one
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
 </body>
 </html>

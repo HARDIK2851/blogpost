@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{% block title %}BlogSite{% endblock %}</title>
+
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+{% block extra_css %}{% endblock %}
+
+<script src="{% static 'js/base.js' %}" defer></script>
+{% block extra_js %}{% endblock %}
+
+</head>
+
+<body>
+
+<div class="layout">
+
+{% if user.is_authenticated %}
+<aside class="sidebar">
+
+<h2>User</h2>
+
+<div class="user-info">
+<p><strong>{{ user.username }}</strong></p>
+<p>{{ user.first_name }} {{ user.last_name }}</p>
+<p class="email">{{ user.email }}</p>
+</div>
+
+<form method="POST" action="{% url 'users:logout' %}">
+{% csrf_token %}
+<button class="btn logout-btn" type="submit">Logout</button>
+</form>
+
+</aside>
+{% endif %}
+
+<main class="main-content">
+
+{% block content %}
+{% endblock %}
+
+</main>
+
+</div>
+
+</body>
+</html>

@@ -56,7 +56,7 @@ ROOT_URLCONF = 'blogpost.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,3 +122,8 @@ AUTH_USER_MODEL = "users.User"
 LOGIN_URL = "/"
 LOGOUT_REDIRECT_URL = 'users:home'
 LOGIN_REDIRECT_URL = 'blogs:home'
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]

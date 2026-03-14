@@ -1,45 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs</title>
-</head>
+{% block title %}Blogs{% endblock %}
 
-<body>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock %}
 
-    <div>
-        {% if user.is_authenticated %}
+{% block content %}
 
-        <h2>User Information</h2>
+<h1 class="page-title">Blog List</h1>
 
-        <p>Username: {{ user.username }}</p>
-        <p>First Name: {{ user.first_name }}</p>
-        <p>Last Name: {{ user.last_name }}</p>
-        <p>Email: {{ user.email }}</p>
-        <form method="POST" action="{% url 'users:logout' %}">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
-        {% endif %}
-    </div>
+<a class="btn create-btn" href="{% url 'blogs:createpost' %}">
+Create Post
+</a>
 
-    <h1>Blog List</h1>
-    <button><a href="{%url 'blogs:createpost'%}">Create Post</a></button>
+<div class="posts-container">
 
-    <div>
-        <h1>All posts</h1>
-        {% for post in posts %}
-        <h2><a href="{%url 'blogs:postdetail' post.id%}">{{ post.title }}</a></h2>
-        <!-- <p>{{ post.maincontent }}</p> -->
-        <p>Author: {{ post.author }}</p>
-        <p>Created: {{ post.datecreated }}</p>
-    </div>
+{% for post in posts %}
 
-    <hr>
+<div class="post-card">
 
-    {% endfor %}
-</body>
+<h2>
+<a class="post-title" href="{% url 'blogs:postdetail' post.id %}">
+{{ post.title }}
+</a>
+</h2>
 
-</html>
+<p class="meta">Author: {{ post.author }}</p>
+<p class="meta">Created: {{ post.datecreated }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

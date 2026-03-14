@@ -1,0 +1,49 @@
+.page-title{
+margin-bottom:20px;
+}
+
+/* create button */
+
+.create-btn{
+background:#2563eb;
+color:white;
+margin-bottom:30px;
+}
+
+.create-btn:hover{
+background:#1e40af;
+}
+
+/* posts */
+
+.posts-container{
+max-width:750px;
+}
+
+.post-card{
+background:white;
+padding:20px;
+border-radius:10px;
+margin-bottom:20px;
+box-shadow:0 4px 15px rgba(0,0,0,0.06);
+transition:transform 0.15s;
+}
+
+.post-card:hover{
+transform:translateY(-2px);
+}
+
+.post-title{
+color:#2563eb;
+text-decoration:none;
+}
+
+.post-title:hover{
+text-decoration:underline;
+}
+
+.meta{
+font-size:14px;
+color:#6b7280;
+margin-top:5px;
+}
