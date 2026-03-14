@@ -1,46 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post detail</title>
-</head>
+{% block title %}{{ post.title }}{% endblock %}
 
-<body>
-    <form method="POST" action="{% url 'users:logout' %}">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="post-detail-card">
+    <h1 class="post-title">{{ post.title }}</h1>
+    <p class="post-content">{{ post.maincontent }}</p>
+
+    <p class="post-meta">Author: {{ post.author }}</p>
+    <p class="post-meta">Created: {{ post.datecreated }}</p>
+</div>
+
+<div class="form-container">
+    <h2>Add Comment</h2>
+    <form method="POST" class="form-box">
         {% csrf_token %}
-        <button type="submit">Logout</button>
+        {{ form.content }}
+        <button class="btn primary full-btn" type="submit">Add Comment</button>
     </form>
-    <div>
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.maincontent }}</p>
-        <p>Author: {{ post.author }}</p>
-        <p>Created: {{ post.datecreated }}</p>
-    </div>
+</div>
 
-    <div>
-        <h2>Add Comment</h2>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.content }}
-            <button type="submit">Add Comment</button>
-        </form>
-    </div>
+<div class="comments-container">
+    <h2>Comments</h2>
 
-    <h2>Comments</h2> {% for comment in comments %} <div class="comment">
-        <p> <strong>{{ comment.author }}</strong> <span>{{ comment.datetime }}</span> </p>
+    {% for comment in comments %}
+    <div class="comment-card">
+
+        <p><strong>{{ comment.author }}</strong> <span class="comment-time">{{ comment.datetime }}</span></p>
         <p>{{ comment.content }}</p>
 
         {% if user == post.author or user == comment.author %}
-
         <form method="POST" action="{% url 'blogs:deletecomment' comment.id %}">
             {% csrf_token %}
-            <button type="submit">Delete</button>
+            <button class="btn delete-btn" type="submit">Delete</button>
         </form>
-
         {% endif %}
-    </div> {% empty %} <p>No comments yet.</p> {% endfor %}
-</body>
 
-</html>
+    </div>
+    {% empty %}
+    <p>No comments yet.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

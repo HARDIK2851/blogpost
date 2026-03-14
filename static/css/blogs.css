@@ -85,3 +85,55 @@ margin-top:5px;
     width: 100%;
     margin-top: 15px;
 }
+
+/* Post detail */
+.post-detail-card {
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.06);
+    margin-bottom:25px;
+}
+
+.post-content {
+    margin-top:10px;
+    line-height:1.6;
+}
+
+.post-meta {
+    font-size:14px;
+    color:#6b7280;
+    margin-top:5px;
+}
+
+/* Comment section */
+.comments-container {
+    max-width:750px;
+}
+
+.comment-card {
+    background:#f9fafb;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:15px;
+    border-left:4px solid #2563eb;
+}
+
+.comment-time {
+    font-size:12px;
+    color:#6b7280;
+    margin-left:10px;
+}
+
+/* Delete button for comment */
+.delete-btn {
+    background:#ef4444;
+    color:white;
+    font-size:12px;
+    padding:6px 12px;
+    margin-top:8px;
+}
+
+.delete-btn:hover {
+    background:#dc2626;
+}
