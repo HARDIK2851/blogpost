@@ -1,29 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create post</title>
-</head>
+{% block title %}Create Post{% endblock %}
 
-<body>
-<form method="POST" action="{% url 'users:logout' %}">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
-    <h1>Create your post here</h1>
-    <form method="POST">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">Create Your Post</h1>
+
+<div class="form-container">
+    <form method="POST" class="form-box">
         {% csrf_token %}
 
-        <label>Title</label><br>
-        {{ form.title }}<br><br>
+        <label for="id_title">Title</label>
+        {{ form.title }}
 
-        <label>Content</label><br>
-        {{ form.maincontent }}<br><br>
+        <label for="id_maincontent">Content</label>
+        {{ form.maincontent }}
 
-        <button type="submit">Create Post</button>
+        <button class="btn primary full-btn" type="submit">Create Post</button>
     </form>
-</body>
+</div>
 
-</html>
+{% endblock %}
