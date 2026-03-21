@@ -23,9 +23,17 @@
             </a>
         </h2>
 
+        <!-- 🔥 MAIN CONTENT PREVIEW -->
+        <p class="post-preview">
+            {{ post.maincontent|truncatewords:10 }}
+        </p>
+
         <p class="meta">Author: {{ post.author }}</p>
         <p class="meta">Created: {{ post.datecreated }}</p>
-        <p class="meta">Edited: {{ post.dateedited }}</p>
+
+        {% if post.dateupdated != post.datecreated %}
+        <p class="edited-tag">Edited</p>
+        {% endif %}
 
     </div>
 
