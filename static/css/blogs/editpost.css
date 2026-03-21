@@ -1,0 +1,104 @@
+/* WRAPPER */
+.edit-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* CONTAINER */
+.edit-container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+/* TITLE */
+.page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* IMAGE PREVIEW */
+.edit-image-preview {
+    margin-bottom: 20px;
+}
+
+/* 🔥 CONSISTENT IMAGE SIZE */
+.edit-image-preview img {
+    width: 160px;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+/* FORM */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* FORM GROUP */
+.form-group {
+    margin-bottom: 16px;
+}
+
+/* LABEL */
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* INPUT + TEXTAREA */
+.edit-form input,
+.edit-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+/* TEXTAREA */
+.edit-form textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+/* FOCUS */
+.edit-form input:focus,
+.edit-form textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* BUTTON */
+.update-btn {
+    background-color: #10b981;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.update-btn:hover {
+    background-color: #059669;
+}
+
+/* BACK LINK */
+.back-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

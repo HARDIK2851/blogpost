@@ -4,35 +4,47 @@
 {% block title %}Edit Post{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+<link rel="stylesheet" href="{% static 'css/blogs/editpost.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<div class="edit-container">
+<section class="edit-wrapper">
 
-    <h1>Edit Post</h1>
+    <div class="edit-container">
 
-    {% if post.image %}
+        <h1 class="page-title">Edit Post</h1>
+
+        {% if post.image %}
         <div class="edit-image-preview">
             <img src="{{ post.image.url }}">
         </div>
-    {% endif %}
+        {% endif %}
 
-    <form method="POST">
-        {% csrf_token %}
+        <form method="POST" class="edit-form">
+            {% csrf_token %}
 
-        <label>Title</label>
-        {{ form.title }}
+            <div class="form-group">
+                <label>Title</label>
+                {{ form.title }}
+            </div>
 
-        <label>Content</label>
-        {{ form.maincontent }}
+            <div class="form-group">
+                <label>Content</label>
+                {{ form.maincontent }}
+            </div>
 
-        <button type="submit" class="edit-btn">Update Post</button>
-    </form>
+            <button type="submit" class="btn update-btn">
+                Update Post
+            </button>
+        </form>
 
-    <a href="{% url 'blogs:myposts' %}" class="back-link">← Back</a>
+        <a href="{% url 'blogs:myposts' %}" class="back-link">
+            ← Back to My Posts
+        </a>
 
-</div>
+    </div>
+
+</section>
 
 {% endblock %}

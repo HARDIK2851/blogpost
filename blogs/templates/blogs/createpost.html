@@ -4,40 +4,61 @@
 {% block title %}Create Post{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+<link rel="stylesheet" href="{% static 'css/blogs/createpost.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/blogs/createpost.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
 
-<h1 class="page-title">Create Your Post</h1>
+<section class="create-wrapper">
 
-<div class="form-container">
-    {% if form.errors %}
-    {% for field in form %}
-    {% for error in field.errors %}
+    <div class="create-container">
 
-    <script>
-        alert("{{ error|escapejs }}");
-    </script>
-    {% endfor %}
+        <h1 class="page-title">Create Your Post</h1>
 
-    {% endfor %}
+        <!-- 🔥 ALERT ERRORS -->
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <script>
+                        alert("{{ error|escapejs }}");
+                    </script>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
 
-    {% endif %}
-    <form method="POST" enctype="multipart/form-data" class="form-box">
+        <form method="POST" enctype="multipart/form-data" class="create-form">
+            {% csrf_token %}
 
-        {% csrf_token %}
+            <!-- IMAGE -->
+            <div class="form-group">
+                <label>Upload Image</label>
+                {{ form.image }}
+            </div>
 
-        <label>Image</label>
-        {{ form.image }}
+            <!-- TITLE -->
+            <div class="form-group">
+                <label for="id_title">Title</label>
+                {{ form.title }}
+            </div>
 
-        <label for="id_title">Title</label>
-        {{ form.title }}
+            <!-- CONTENT -->
+            <div class="form-group">
+                <label for="id_maincontent">Content</label>
+                {{ form.maincontent }}
+            </div>
 
-        <label for="id_maincontent">Content</label>
-        {{ form.maincontent }}
+            <button class="btn submit-btn" type="submit">
+                Create Post
+            </button>
 
-        <button class="btn primary full-btn" type="submit">Create Post</button>
-    </form>
-</div>
+        </form>
+
+    </div>
+
+</section>
+
 {% endblock %}

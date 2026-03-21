@@ -1,0 +1,92 @@
+/* WRAPPER */
+.create-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* CONTAINER */
+.create-container {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+/* TITLE */
+.page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* FORM */
+.create-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* GROUP */
+.form-group {
+    margin-bottom: 16px;
+}
+
+/* LABEL */
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* INPUT + TEXTAREA */
+.create-form input,
+.create-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+/* TEXTAREA */
+.create-form textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+/* FILE INPUT (make nicer) */
+.create-form input[type="file"] {
+    padding: 6px;
+    background-color: #f9fafb;
+    cursor: pointer;
+}
+
+/* FOCUS */
+.create-form input:focus,
+.create-form textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* BUTTON */
+.submit-btn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #2563eb;
+}
+
+.image-preview {
+    margin-top: 10px;
+    width: 160px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
