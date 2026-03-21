@@ -12,8 +12,11 @@
 <h1 class="page-title">Create Your Post</h1>
 
 <div class="form-container">
-    <form method="POST" class="form-box">
+    <form method="POST" enctype="multipart/form-data" class="form-box">
         {% csrf_token %}
+
+        <label>Image</label>
+        {{ form.image }}
 
         <label for="id_title">Title</label>
         {{ form.title }}

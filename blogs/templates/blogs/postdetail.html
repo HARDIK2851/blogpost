@@ -10,6 +10,9 @@
 {% block content %}
 
 <div class="post-detail-card">
+    {% if post.image %}
+    <img src="{{ post.image.url }}" class="post-detail-image">
+    {% endif %}
     <h1 class="post-title">{{ post.title }}</h1>
     <p class="post-content">{{ post.maincontent }}</p>
 

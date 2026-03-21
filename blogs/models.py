@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from cloudinary.models import CloudinaryField
 
 
 class Post(models.Model):
@@ -12,6 +13,7 @@ class Post(models.Model):
     )
     datecreated = models.DateTimeField(auto_now_add=True)
     dateedited = models.DateTimeField(auto_now=True)
+    image = CloudinaryField('image', blank=True, null=True)
 
     def __str__(self):
         return self.title
