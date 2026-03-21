@@ -16,6 +16,11 @@ class PostForm(forms.ModelForm):
 
         return image
 
+class EditPostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'maincontent']
+
 class CommentForm(forms.ModelForm):
 
     class Meta:

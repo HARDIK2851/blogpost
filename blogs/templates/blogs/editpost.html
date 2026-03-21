@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Post{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="edit-container">
+
+    <h1>Edit Post</h1>
+
+    {% if post.image %}
+        <div class="edit-image-preview">
+            <img src="{{ post.image.url }}">
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Title</label>
+        {{ form.title }}
+
+        <label>Content</label>
+        {{ form.maincontent }}
+
+        <button type="submit" class="edit-btn">Update Post</button>
+    </form>
+
+    <a href="{% url 'blogs:myposts' %}" class="back-link">← Back</a>
+
+</div>
+
+{% endblock %}
