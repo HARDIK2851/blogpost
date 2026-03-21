@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,50 +13,50 @@
 
     <script src="{% static 'js/base.js' %}" defer></script>
     {% block extra_js %}{% endblock %}
-
 </head>
 
 <body>
 
-    <div class="layout">
+<div class="layout">
 
-        {% if user.is_authenticated %}
-        <aside class="sidebar">
+    {% if user.is_authenticated %}
+    <aside class="sidebar">
 
-            <h2>User</h2>
+        <!-- HEADER -->
+        <div class="sidebar-header">
+            <h2>BlogSite</h2>
+        </div>
 
-            <div class="user-info">
-                <p><strong>{{ user.username }}</strong></p>
-                <p>{{ user.first_name }} {{ user.last_name }}</p>
-                <p class="email">{{ user.email }}</p>
-            </div>
+        <!-- USER INFO -->
+        <div class="user-info">
+            <p class="username">{{ user.username }}</p>
+            <p class="fullname">{{ user.first_name }} {{ user.last_name }}</p>
+            <p class="email">{{ user.email }}</p>
+        </div>
 
-            <form method="POST" action="{% url 'users:logout' %}">
-                {% csrf_token %}
-                <button class="btn logout-btn" type="submit">Logout</button>
-            </form>
+        <!-- NAVIGATION (FIXED) -->
+        <nav class="nav-links">
+            <a href="{% url 'blogs:home' %}" class="nav-link">Home</a>
+            <a href="{% url 'blogs:createpost' %}" class="nav-link">Create Post</a>
+            <a href="{% url 'blogs:myposts' %}" class="nav-link">My Posts</a>
+        </nav>
 
-            <nav class="navbar">
+        <!-- LOGOUT -->
+        <form method="POST" action="{% url 'users:logout' %}" class="logout-form">
+            {% csrf_token %}
+            <button class="btn logout-btn" type="submit">Logout</button>
+        </form>
 
-                <div class="nav-center">
-                    <a href="{% url 'blogs:home' %}" class="nav-link">Home</a>
-                    <a href="{% url 'blogs:createpost' %}" class="nav-link">Create Post</a>
-                    <a href="{% url 'blogs:myposts' %}">My Posts</a>`
-                </div>
-            </nav>
+    </aside>
+    {% endif %}
 
-        </aside>
-        {% endif %}
+    <!-- MAIN -->
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
 
-        <main class="main-content">
-
-            {% block content %}
-            {% endblock %}
-
-        </main>
-
-    </div>
+</div>
 
 </body>
-
 </html>
