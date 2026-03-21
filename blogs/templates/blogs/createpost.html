@@ -12,7 +12,20 @@
 <h1 class="page-title">Create Your Post</h1>
 
 <div class="form-container">
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+
+    <script>
+        alert("{{ error|escapejs }}");
+    </script>
+    {% endfor %}
+
+    {% endfor %}
+
+    {% endif %}
     <form method="POST" enctype="multipart/form-data" class="form-box">
+
         {% csrf_token %}
 
         <label>Image</label>
@@ -27,5 +40,4 @@
         <button class="btn primary full-btn" type="submit">Create Post</button>
     </form>
 </div>
-
 {% endblock %}

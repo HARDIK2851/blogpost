@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}My Posts{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h1>My Posts</h1>
+
+<div class="myposts-container">
+
+    {% for post in posts %}
+    <div class="post-card">
+
+        {% if post.image %}
+            <img src="{{ post.image.url }}" class="post-image">
+        {% endif %}
+
+        <div class="post-content">
+            <h2>{{ post.title }}</h2>
+
+            <p class="post-text">
+                {{ post.maincontent|truncatewords:25 }}
+            </p>
+
+            <p class="post-date">
+                Created: {{ post.datecreated }}
+            </p>
+
+            <div class="post-actions">
+                <!-- EDIT -->
+                <a href="{% url 'blogs:editpost' post.id %}" class="btn edit-btn">
+                    Edit
+                </a>
+
+                <!-- DELETE -->
+                <form method="POST" action="{% url 'blogs:deletepost' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn delete-btn">
+                        Delete
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    {% empty %}
+        <p>You have no posts yet.</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

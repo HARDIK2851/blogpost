@@ -23,6 +23,9 @@ def createpost(request):
             post.save()
 
             return redirect('blogs:home')
+        
+        else:
+            print(form.errors)
 
     else:
         form = PostForm()
@@ -62,3 +65,7 @@ def deletecomment(request, comment_id):
     comment.delete()
 
     return redirect('blogs:postdetail', post_id=post_id)
+
+@login_required
+def myposts(request):
+    return render(request,'blogs/myposts.html')

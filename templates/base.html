@@ -1,52 +1,66 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>{% block title %}BlogSite{% endblock %}</title>
+    <title>{% block title %}BlogSite{% endblock %}</title>
 
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-{% block extra_css %}{% endblock %}
+    {% block extra_css %}{% endblock %}
 
-<script src="{% static 'js/base.js' %}" defer></script>
-{% block extra_js %}{% endblock %}
+    <script src="{% static 'js/base.js' %}" defer></script>
+    {% block extra_js %}{% endblock %}
 
 </head>
 
 <body>
 
-<div class="layout">
+    <div class="layout">
 
-{% if user.is_authenticated %}
-<aside class="sidebar">
+        {% if user.is_authenticated %}
+        <aside class="sidebar">
 
-<h2>User</h2>
+            <h2>User</h2>
 
-<div class="user-info">
-<p><strong>{{ user.username }}</strong></p>
-<p>{{ user.first_name }} {{ user.last_name }}</p>
-<p class="email">{{ user.email }}</p>
-</div>
+            <div class="user-info">
+                <p><strong>{{ user.username }}</strong></p>
+                <p>{{ user.first_name }} {{ user.last_name }}</p>
+                <p class="email">{{ user.email }}</p>
+            </div>
 
-<form method="POST" action="{% url 'users:logout' %}">
-{% csrf_token %}
-<button class="btn logout-btn" type="submit">Logout</button>
-</form>
+            <form method="POST" action="{% url 'users:logout' %}">
+                {% csrf_token %}
+                <button class="btn logout-btn" type="submit">Logout</button>
+            </form>
+            <a class="btn create-btn" href="{% url 'blogs:createpost' %}">
+                Create Post
+            </a>
 
-</aside>
-{% endif %}
+            <nav class="navbar">
 
-<main class="main-content">
+                <div class="nav-center">
+                    <a href="{% url 'blogs:home' %}" class="nav-link">Home</a>
+                    <a href="{% url 'blogs:createpost' %}" class="nav-link">Create Post</a>
+                    <a href="{% url 'blogs:myposts' %}">My Posts</a>`
+                </div>
+            </nav>
 
-{% block content %}
-{% endblock %}
+        </aside>
+        {% endif %}
 
-</main>
+        <main class="main-content">
 
-</div>
+            {% block content %}
+            {% endblock %}
+
+        </main>
+
+    </div>
 
 </body>
+
 </html>
