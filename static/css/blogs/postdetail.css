@@ -1,0 +1,118 @@
+/* WRAPPER */
+.post-detail-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* POST CARD */
+.post-detail-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 30px;
+}
+
+/* IMAGE */
+.image-wrapper {
+    margin-bottom: 20px;
+}
+
+.post-detail-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* TITLE */
+.post-title {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+/* META */
+.post-meta {
+    color: #6b7280;
+    font-size: 13px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+/* CONTENT */
+.post-content {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #374151;
+    white-space: pre-line; /* keeps line breaks */
+}
+
+/* FORM */
+.form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 30px;
+}
+
+.form-box textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 10px;
+}
+
+/* COMMENTS */
+.comments-container h2 {
+    margin-bottom: 15px;
+}
+
+.comment-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* COMMENT HEADER */
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.comment-time {
+    color: #9ca3af;
+}
+
+/* COMMENT TEXT */
+.comment-text {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 10px;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+}
+
+/* EMPTY STATE */
+.empty-state {
+    color: #6b7280;
+}

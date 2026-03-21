@@ -7,6 +7,10 @@
 <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/blogs/postdetail.js' %}" defer></script>
+{% endblock %}
+
 {% block content %}
 
 <div class="post-detail-card">

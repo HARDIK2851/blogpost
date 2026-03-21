@@ -1,0 +1,123 @@
+/* WRAPPER */
+.myposts-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* TITLE */
+.page-title {
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+/* CONTAINER */
+.myposts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* CARD */
+.post-card {
+    display: flex;
+    gap: 18px;
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+}
+
+/* HOVER */
+.post-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* IMAGE */
+.image-wrapper {
+    flex-shrink: 0;
+}
+
+.post-image {
+    width: 140px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* CONTENT */
+.post-content {
+    flex: 1;
+}
+
+/* TITLE */
+.post-title {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    text-decoration: none;
+    margin-bottom: 6px;
+}
+
+.post-title:hover {
+    color: #3b82f6;
+}
+
+/* TEXT */
+.post-text {
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* DATE */
+.post-date {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 10px;
+}
+
+/* ACTIONS */
+.post-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* BUTTON BASE */
+.btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+}
+
+/* EDIT */
+.edit-btn {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #2563eb;
+}
+
+/* DELETE */
+.delete-btn {
+    background-color: #ef4444;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+}
+
+/* EMPTY */
+.empty-state {
+    text-align: center;
+    color: #6b7280;
+    margin-top: 40px;
+}

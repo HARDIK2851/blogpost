@@ -4,57 +4,71 @@
 {% block title %}My Posts{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+<link rel="stylesheet" href="{% static 'css/blogs/myposts.css' %}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/blogs/myposts.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
 
-<h1>My Posts</h1>
+<section class="myposts-wrapper">
 
-<div class="myposts-container">
+    <h1 class="page-title">My Posts</h1>
 
-    {% for post in posts %}
-    <div class="post-card">
+    <div class="myposts-container">
 
-        {% if post.image %}
-            <img src="{{ post.image.url }}" class="post-image">
-        {% endif %}
+        {% for post in posts %}
+        <article class="post-card">
 
-        <div class="post-content">
-            <a class="post-title" href="{% url 'blogs:postdetail' post.id %}">
-                {{ post.title }}
-            </a>
+            {% if post.image %}
+            <div class="image-wrapper">
+                <img src="{{ post.image.url }}" class="post-image">
+            </div>
+            {% endif %}
 
-            <p class="post-text">
-                {{ post.maincontent|truncatewords:25 }}
-            </p>
+            <div class="post-content">
 
-            <p class="post-date">
-                Created: {{ post.datecreated }}
-            </p>
-
-            <div class="post-actions">
-                <!-- EDIT -->
-                <a href="{% url 'blogs:editpost' post.id %}" class="btn edit-btn">
-                    Edit
+                <a class="post-title" href="{% url 'blogs:postdetail' post.id %}">
+                    {{ post.title }}
                 </a>
 
-                <!-- DELETE -->
-                <form method="POST" action="{% url 'blogs:deletepost' post.id %}">
-                    {% csrf_token %}
-                    <button type="submit" class="btn delete-btn">
-                        Delete
-                    </button>
-                </form>
+                <p class="post-text">
+                    {{ post.maincontent|truncatewords:20 }}
+                </p>
+
+                <p class="post-date">
+                    {{ post.datecreated|date:"M d, Y" }}
+                </p>
+
+                <div class="post-actions">
+
+                    <!-- EDIT -->
+                    <a href="{% url 'blogs:editpost' post.id %}" class="btn edit-btn">
+                        Edit
+                    </a>
+
+                    <!-- DELETE -->
+                    <form method="POST" action="{% url 'blogs:deletepost' post.id %}" class="delete-form">
+                        {% csrf_token %}
+                        <button type="submit" class="btn delete-btn">
+                            Delete
+                        </button>
+                    </form>
+
+                </div>
+
             </div>
 
-        </div>
+        </article>
+
+        {% empty %}
+        <p class="empty-state">You have no posts yet.</p>
+        {% endfor %}
 
     </div>
-    {% empty %}
-        <p>You have no posts yet.</p>
-    {% endfor %}
 
-</div>
+</section>
 
 {% endblock %}

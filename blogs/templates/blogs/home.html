@@ -7,6 +7,10 @@
 <link rel="stylesheet" href="{% static 'css/blogs/home.css' %}">
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/blogs/home.js' %}" defer></script>
+{% endblock %}
+
 {% block content %}
 
 <section class="blog-wrapper">
@@ -17,7 +21,7 @@
 
         {% for post in posts %}
 
-        <article class="post-card">
+        <article class="post-card" data-url="{% url 'blogs:postdetail' post.id %}">
 
             <div class="post-content">
 
@@ -35,7 +39,7 @@
                     <span>By {{ post.author }}</span>
                     <span>• {{ post.datecreated|date:"M d, Y" }}</span>
 
-                    {% if post.dateupdated != post.datecreated %}
+                    {% if post.dateedited != post.datecreated %}
                         <span class="edited-tag">Edited</span>
                     {% endif %}
                 </div>
