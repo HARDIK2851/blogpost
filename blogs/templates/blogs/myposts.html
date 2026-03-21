@@ -21,7 +21,9 @@
         {% endif %}
 
         <div class="post-content">
-            <h2>{{ post.title }}</h2>
+            <a class="post-title" href="{% url 'blogs:postdetail' post.id %}">
+                {{ post.title }}
+            </a>
 
             <p class="post-text">
                 {{ post.maincontent|truncatewords:25 }}
