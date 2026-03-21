@@ -4,41 +4,54 @@
 {% block title %}Blogs{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+<link rel="stylesheet" href="{% static 'css/blogs/home.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<h1 class="page-title">Blog List</h1>
+<section class="blog-wrapper">
 
-<div class="posts-container">
+    <h1 class="page-title">Latest Posts</h1>
 
-    {% for post in posts %}
+    <div class="posts-container">
 
-    <div class="post-card">
+        {% for post in posts %}
 
-        <h2>
-            <a class="post-title" href="{% url 'blogs:postdetail' post.id %}">
-                {{ post.title }}
-            </a>
-        </h2>
+        <article class="post-card">
 
-        <!-- 🔥 MAIN CONTENT PREVIEW -->
-        <p class="post-preview">
-            {{ post.maincontent|truncatewords:10 }}
-        </p>
+            <div class="post-content">
 
-        <p class="meta">Author: {{ post.author }}</p>
-        <p class="meta">Created: {{ post.datecreated }}</p>
+                <h2 class="post-heading">
+                    <a class="post-title" href="{% url 'blogs:postdetail' post.id %}">
+                        {{ post.title }}
+                    </a>
+                </h2>
 
-        {% if post.dateupdated != post.datecreated %}
-        <p class="edited-tag">Edited</p>
-        {% endif %}
+                <p class="post-preview">
+                    {{ post.maincontent|truncatewords:15 }}
+                </p>
+
+                <div class="post-meta">
+                    <span>By {{ post.author }}</span>
+                    <span>• {{ post.datecreated|date:"M d, Y" }}</span>
+
+                    {% if post.dateupdated != post.datecreated %}
+                        <span class="edited-tag">Edited</span>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </article>
+
+        {% empty %}
+
+        <p class="empty-state">No posts available yet.</p>
+
+        {% endfor %}
 
     </div>
 
-    {% endfor %}
-
-</div>
+</section>
 
 {% endblock %}
