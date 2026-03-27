@@ -8,7 +8,6 @@
     <title>{% block title %}BlogSite{% endblock %}</title>
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-
     {% block extra_css %}{% endblock %}
 
     <script src="{% static 'js/base.js' %}" defer></script>
@@ -17,41 +16,41 @@
 
 <body>
 
-<div class="layout">
+<div class="base-layout">
 
     {% if user.is_authenticated %}
-    <aside class="sidebar">
+    <aside class="base-sidebar">
 
-        <!-- HEADER -->
-        <div class="sidebar-header">
+        <!-- LOGO -->
+        <div class="base-logo">
             <h2>BlogSite</h2>
         </div>
 
-        <!-- USER INFO -->
-        <div class="user-info">
-            <p class="username">{{ user.username }}</p>
-            <p class="fullname">{{ user.first_name }} {{ user.last_name }}</p>
-            <p class="email">{{ user.email }}</p>
+        <!-- USER -->
+        <div class="base-user">
+            <p class="base-username">{{ user.username }}</p>
+            <p class="base-fullname">{{ user.first_name }} {{ user.last_name }}</p>
+            <p class="base-email">{{ user.email }}</p>
         </div>
 
-        <!-- NAVIGATION (FIXED) -->
-        <nav class="nav-links">
-            <a href="{% url 'blogs:home' %}" class="nav-link">Home</a>
-            <a href="{% url 'blogs:createpost' %}" class="nav-link">Create Post</a>
-            <a href="{% url 'blogs:myposts' %}" class="nav-link">My Posts</a>
+        <!-- NAV -->
+        <nav class="base-nav">
+            <a href="{% url 'blogs:home' %}" class="base-nav-link">Home</a>
+            <a href="{% url 'blogs:createpost' %}" class="base-nav-link">Create Post</a>
+            <a href="{% url 'blogs:myposts' %}" class="base-nav-link">My Posts</a>
         </nav>
 
         <!-- LOGOUT -->
-        <form method="POST" action="{% url 'users:logout' %}" class="logout-form">
+        <form method="POST" action="{% url 'users:logout' %}" class="base-logout">
             {% csrf_token %}
-            <button class="btn logout-btn" type="submit">Logout</button>
+            <button class="base-btn base-btn-danger" type="submit">Logout</button>
         </form>
 
     </aside>
     {% endif %}
 
     <!-- MAIN -->
-    <main class="main-content">
+    <main class="base-main">
         {% block content %}
         {% endblock %}
     </main>
