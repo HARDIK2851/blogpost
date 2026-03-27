@@ -24,12 +24,16 @@
     <p class="post-meta">Created: {{ post.datecreated }}</p>
 </div>
 
-<div class="form-container">
-    <h2>Add Comment</h2>
-    <form method="POST" class="form-box">
+<div class="base-comment-container">
+    <h2 class="base-comment-title">Add Comment</h2>
+    <form method="POST" class="base-comment-form">
         {% csrf_token %}
-        {{ form.content }}
-        <button class="btn primary full-btn" type="submit">Add Comment</button>
+        <textarea name="{{ form.content.name }}" 
+                  class="base-comment-textarea" 
+                  placeholder="Write your comment..." 
+                  rows="4">{{ form.content.value }}</textarea>
+
+        <button class="base-comment-btn" type="submit">Add Comment</button>
     </form>
 </div>
 
@@ -40,7 +44,7 @@
     <div class="comment-card">
 
         <p><strong>{{ comment.author }}</strong> <span class="comment-time">{{ comment.datetime }}</span></p>
-        <p>{{ comment.content }}</p>
+        <p id="text-{{comment.id}}"">{{ comment.content }}</p>
 
         {% if user == post.author or user == comment.author %}
         <form method="POST" action="{% url 'blogs:deletecomment' comment.id %}">
@@ -48,6 +52,17 @@
             <button class="btn delete-btn" type="submit">Delete</button>
         </form>
         {% endif %}
+
+        {% if request.user == comment.author %}
+        <button class="edit-btn" data-id="{{ comment.id }}">Edit</button>
+        {% endif %}
+
+        <div class="edit-box" id="edit-box-{{ comment.id }}" style="display:none;">
+            <textarea id="edit-input-{{ comment.id }}">{{ comment.content }}</textarea>
+
+            <button class="save-btn" data-id="{{ comment.id }}">Save</button>
+            <button class="cancel-btn" data-id="{{ comment.id }}">Cancel</button>
+        </div>
 
     </div>
     {% empty %}

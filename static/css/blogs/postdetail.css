@@ -48,22 +48,59 @@
     white-space: pre-line; /* keeps line breaks */
 }
 
-/* FORM */
-.form-container {
-    background-color: #ffffff;
+/* Container */
+.base-comment-container {
+    background-color: #f9f9f9;
     padding: 20px;
     border-radius: 12px;
-    border: 1px solid #e5e7eb;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 700px;
+    width: 100%;
 }
 
-.form-box textarea {
+/* Title */
+.base-comment-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Textarea */
+.base-comment-textarea {
     width: 100%;
-    min-height: 100px;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #d1d5db;
-    margin-bottom: 10px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    margin-bottom: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.base-comment-textarea:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74,144,226,0.3);
+}
+
+/* Button */
+.base-comment-btn {
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.base-comment-btn:hover {
+    background-color: #357abd;
+    transform: translateY(-1px);
 }
 
 /* COMMENTS */
@@ -112,7 +149,91 @@
     background-color: #dc2626;
 }
 
-/* EMPTY STATE */
-.empty-state {
-    color: #6b7280;
+/* ✏️ Edit Button */
+.edit-btn {
+    background-color: transparent;
+    color: #2563eb;
+    border: 1px solid #2563eb;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+    background-color: #2563eb;
+    color: #fff;
+}
+
+
+/* 📦 Edit Box Container */
+.edit-box {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+
+/* 📝 Textarea */
+.edit-box textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 0.9rem;
+    resize: vertical;
+    outline: none;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edit-box textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+
+/* 🔘 Button Group Spacing */
+.edit-box button {
+    margin-top: 8px;
+    margin-right: 6px;
+}
+
+
+/* 💾 Save Button */
+.save-btn {
+    background-color: #16a34a;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.save-btn:hover {
+    background-color: #15803d;
+}
+
+
+/* ❌ Cancel Button */
+.cancel-btn {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.cancel-btn:hover {
+    background-color: #dc2626;
 }

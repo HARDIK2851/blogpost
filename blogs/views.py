@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+from django.http import JsonResponse
 from .forms import PostForm, CommentForm, EditPostForm
 from .models import Post, Comment
 
@@ -103,4 +105,24 @@ def editpost(request,post_id):
     return render(request, 'blogs/editpost.html', {
         'form': form,
         'post': post
+    })
+
+@require_POST
+def editcomment(request, comment_id):
+    comment = Comment.objects.get(id=comment_id)
+
+    if request.user != comment.author:
+        return JsonResponse({'error': 'Unauthorized'}, status=403)
+
+    new_text = request.POST.get('content')
+
+    if not new_text:
+        return JsonResponse({'error': 'Empty content'}, status=400)
+
+    comment.content = new_text
+    comment.save()
+
+    return JsonResponse({
+        'success': True,
+        'content': comment.content
     })
