@@ -103,137 +103,166 @@
     transform: translateY(-1px);
 }
 
-/* COMMENTS */
+/* COMMENTS CONTAINER */
+.comments-container {
+    max-width: 800px;
+    margin-top: 30px;
+}
+
 .comments-container h2 {
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: #1f2937;
 }
 
+/* COMMENT CARD */
 .comment-card {
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    padding: 15px;
-    border-radius: 10px;
+    background: #ffffff;
+    padding: 16px 18px;
+    border-radius: 12px;
     margin-bottom: 15px;
+    border: 1px solid #e5e7eb;
+    transition: box-shadow 0.2s ease, transform 0.15s ease;
+    position: relative;
 }
 
-/* COMMENT HEADER */
-.comment-header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    margin-bottom: 8px;
+/* HOVER EFFECT */
+.comment-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+
+/* AUTHOR + TIME */
+.comment-card p:first-child {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+.comment-card strong {
+    color: #111827;
 }
 
 .comment-time {
+    font-size: 12px;
     color: #9ca3af;
+    margin-left: 8px;
 }
 
 /* COMMENT TEXT */
-.comment-text {
-    font-size: 14px;
-    color: #374151;
+.comment-card p[id^="text-"] {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #1f2937;
     margin-bottom: 10px;
+    white-space: pre-wrap;
 }
 
-/* DELETE BUTTON */
-.delete-btn {
-    background-color: #ef4444;
-    color: white;
+/* ACTION BUTTONS (EDIT + DELETE) */
+.icon-btn {
+    background: transparent;
     border: none;
-    padding: 6px 10px;
-    border-radius: 6px;
     cursor: pointer;
-}
-
-.delete-btn:hover {
-    background-color: #dc2626;
-}
-
-/* ✏️ Edit Button */
-.edit-btn {
-    background-color: transparent;
-    color: #2563eb;
-    border: 1px solid #2563eb;
-    padding: 4px 10px;
-    font-size: 0.85rem;
+    padding: 6px;
     border-radius: 6px;
-    cursor: pointer;
-    margin-top: 6px;
     transition: all 0.2s ease;
 }
 
-.edit-btn:hover {
-    background-color: #2563eb;
-    color: #fff;
+/* ICON IMAGE */
+.icon-img {
+    width: 18px;
+    height: 18px;
+    display: block;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
 }
 
+/* HOVER EFFECT */
+.icon-btn:hover {
+    background-color: #f3f4f6;
+}
 
-/* 📦 Edit Box Container */
+.icon-btn:hover .icon-img {
+    opacity: 1;
+}
+
+/* DELETE HOVER */
+.icon-form .icon-btn:hover {
+    background-color: #fee2e2;
+}
+
+/* EDIT HOVER */
+.edit-btn:hover {
+    background-color: #dbeafe;
+}
+
+/* ACTION ALIGNMENT */
+.comment-card form,
+.comment-card .edit-btn {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* EDIT BOX */
 .edit-box {
     margin-top: 10px;
-    padding: 12px;
-    border-radius: 10px;
-    background-color: #f9fafb;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    padding-top: 10px;
+    border-top: 1px solid #e5e7eb;
 }
 
-
-/* 📝 Textarea */
+/* TEXTAREA */
 .edit-box textarea {
     width: 100%;
     min-height: 80px;
-    padding: 8px 10px;
+    padding: 10px;
     border-radius: 8px;
     border: 1px solid #d1d5db;
-    font-size: 0.9rem;
     resize: vertical;
-    outline: none;
-    transition: border 0.2s ease, box-shadow 0.2s ease;
+    font-size: 14px;
+    margin-bottom: 8px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .edit-box textarea:focus {
+    outline: none;
     border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 0 4px rgba(37, 99, 235, 0.3);
 }
 
-
-/* 🔘 Button Group Spacing */
-.edit-box button {
-    margin-top: 8px;
-    margin-right: 6px;
-}
-
-
-/* 💾 Save Button */
-.save-btn {
-    background-color: #16a34a;
-    color: white;
-    border: none;
-    padding: 5px 12px;
-    font-size: 0.85rem;
+/* SAVE & CANCEL BUTTONS */
+.save-btn,
+.cancel-btn {
+    padding: 6px 12px;
+    font-size: 13px;
     border-radius: 6px;
+    border: none;
     cursor: pointer;
-    transition: background 0.2s ease;
+    margin-right: 6px;
+    transition: 0.2s ease;
+}
+
+/* SAVE */
+.save-btn {
+    background-color: #2563eb;
+    color: white;
 }
 
 .save-btn:hover {
-    background-color: #15803d;
+    background-color: #1d4ed8;
 }
 
-
-/* ❌ Cancel Button */
+/* CANCEL */
 .cancel-btn {
-    background-color: #ef4444;
-    color: white;
-    border: none;
-    padding: 5px 12px;
-    font-size: 0.85rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s ease;
+    background-color: #e5e7eb;
+    color: #374151;
 }
 
 .cancel-btn:hover {
-    background-color: #dc2626;
+    background-color: #d1d5db;
+}
+
+/* EMPTY STATE */
+.comments-container p {
+    color: #6b7280;
+    font-size: 14px;
 }
