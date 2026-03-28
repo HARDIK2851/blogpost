@@ -1,29 +1,54 @@
-# BlogPost (Django)
+# 📝 Django Blog Application
 
-A simple blog app built with Django where users can create posts and add comments.
+A full-stack blog platform built with Django that allows users to create, manage, and interact with content through posts and comments.
 
-## Features
+🌐 **Live Demo:** https://blogpost-neja.onrender.com
 
-* User signup, login, logout
-* Create and view blog posts
-* Add and delete comments
-* Basic permissions (only owner can delete)
+---
 
-## Tech Used
+## 🚀 Features
 
-* Django (Python)
-* HTML (Templates)
-* CSS & JavaScript
+* User authentication (signup, login, logout)
+* Create, edit, and delete blog posts
+* Image upload support for posts
+* Comment system with inline editing
+* Delete functionality for posts and comments
+* User-specific content management (My Posts)
+* Responsive layout with sidebar navigation
 
-## Run Project
+---
 
-```
-python manage.py migrate
-python manage.py runserver
-```
+## 🛠️ Tech Stack
 
-Open: http://127.0.0.1:8000/
+* **Backend:** Django (Python)
+* **Frontend:** HTML, CSS, JavaScript
+* **Database:** SQLite (Development), PostgreSQL (Production)
+* **Deployment:** Render
 
-## Note
+---
 
-This project is built for learning Django basics and understanding full-stack development.
+## 🎯 Project Overview
+
+This project demonstrates core Django capabilities including:
+
+* Implementation of CRUD operations
+* Handling user authentication and authorization
+* Working with file uploads (images)
+* Dynamic UI updates using JavaScript
+* Clean UI structure with reusable base templates
+
+---
+
+## 🚫 Contributing
+
+This repository is maintained as a personal project.
+Contributions are not being accepted.
+
+---
+
+## 👤 Author
+
+Hardik Thakor
+GitHub: https://github.com/HARDIK2851
+
+---
