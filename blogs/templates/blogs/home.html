@@ -39,7 +39,7 @@
                     <span>By {{ post.author }}</span>
                     <span>• {{ post.datecreated|date:"M d, Y" }}</span>
 
-                    {% if post.dateedited != post.datecreated %}
+                    {% if post.dateedited > post.datecreated %}
                         <span class="edited-tag">Edited</span>
                     {% endif %}
                 </div>
